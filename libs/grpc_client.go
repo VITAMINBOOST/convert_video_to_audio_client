@@ -14,18 +14,10 @@ import (
 var conn *grpc.ClientConn
 
 const (
-	serverAddr = "dev.xinapse.ai:30051"
+	serverAddr = ""
 	devAddr    = "localhost:30051"
 	deadlineMs = 2 * 1000
 )
-
-type AudioDownloadRequest struct {
-	ProcessorUUID   string `json:processorUUID`
-	SourceVideoURL  string `json:sourceVideoURL`
-	SourceVideoUUID string `json:sourceVideoUUID`
-	ProjectUUID     string `json:projectUUID`
-	TaskOwnerUUID   string `json:taskOwnerUUID`
-}
 
 type ConvertVideoToAudioRequest struct {
 	SourceVideoURL string `json:sourceVideoURL`
@@ -47,8 +39,6 @@ func rpcConnect() *grpc.ClientConn {
 
 	return conn
 }
-
-func AudioDownloader(audioDownloadRequest AudioDownloadRequest) {
 
 func ConvertVideoToAudio(convertVideoToAudioRequest ConvertVideoToAudioRequest) {
 	conn := rpcConnect()
