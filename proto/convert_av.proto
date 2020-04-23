@@ -1,0 +1,15 @@
+//protoc convert_av.proto --go_out=plugins=grpc:.
+
+syntax = "proto3";
+package proto;
+
+service AudioDownloadService {
+    rpc ConvertVideoToAudio (ConvertVideoToAudioRequest) returns (Void) {}
+    rpc HealthCheck (Void) returns (Void) {}
+}
+
+message Void {}
+
+message ConvertVideoToAudioRequest {
+    string SourceVideoURL = 1;
+}
