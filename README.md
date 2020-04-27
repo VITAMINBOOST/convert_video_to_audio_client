@@ -7,7 +7,6 @@
 ```
     make window
 ```
-### make 로 빌드 시 실행파일이 이
 ---
 ## 실행 방법
 ### For Linux
