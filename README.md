@@ -5,7 +5,7 @@
 ```
 ### For Window
 ```
-    make window
+    make window 
 ```
 ---
 ## 실행 방법
