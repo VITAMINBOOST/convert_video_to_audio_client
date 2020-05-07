@@ -5,7 +5,6 @@ import (
 	"convert_video_to_audio_client/proto"
 	"log"
 	"os"
-	"strings"
 	"time"
 
 	"google.golang.org/grpc"
@@ -21,6 +20,7 @@ const (
 
 type ConvertVideoToAudioRequest struct {
 	SourceVideoURL string `json:sourceVideoURL`
+	SheetName      string `json:sheetName`
 }
 
 func rpcConnect() *grpc.ClientConn {
@@ -54,16 +54,4 @@ func ConvertVideoToAudio(convertVideoToAudioRequest ConvertVideoToAudioRequest) 
 		SourceVideoURL: convertVideoToAudioRequest.SourceVideoURL,
 	}
 	c.ConvertVideoToAudio(ctx, rpcRequest)
-}
-
-func errHandler(err error) bool {
-	result := true
-	if err != nil {
-		if code := strings.Split(err.Error(), " "); code[4] != "DeadlineExceeded" {
-			log.Fatalf("%s", err)
-		} else {
-			result = false
-		}
-	}
-	return result
 }
